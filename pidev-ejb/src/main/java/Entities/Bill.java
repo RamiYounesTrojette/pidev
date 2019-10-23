@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 @Entity
 public class Bill  implements Serializable {
 	
@@ -14,7 +15,8 @@ public class Bill  implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	//test 4
+	
+	@OneToOne(mappedBy="bill")
+	private Mission mission;
+	//test
 }
-
-
