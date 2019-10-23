@@ -1,6 +1,7 @@
 package Entities;
 
-public enum Role {
-	ADMINISTRATOR, EMPLOYEE, MANAGER
+
+public enum Role{
+	ADMINISTRATOR, MANAGER, EMPLOYEE
 }
 
