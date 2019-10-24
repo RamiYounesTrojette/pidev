@@ -32,4 +32,60 @@ public class Job  implements Serializable {
 	
 	@OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
 	private List<Employee> employees;
+
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public JobFamily getJobfamily() {
+		return jobfamily;
+	}
+
+	public List<Competency> getCompetencies() {
+		return competencies;
+	}
+
+	public List<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public void setJobfamily(JobFamily jobfamily) {
+		this.jobfamily = jobfamily;
+	}
+
+	public void setCompetencies(List<Competency> competencies) {
+		this.competencies = competencies;
+	}
+
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
+	}
 }

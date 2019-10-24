@@ -27,4 +27,52 @@ public class Competency  implements Serializable {
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Employee> employees;
+
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public List<Job> getJobs() {
+		return jobs;
+	}
+
+	public List<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public void setJobs(List<Job> jobs) {
+		this.jobs = jobs;
+	}
+
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
+	}
 }

@@ -25,4 +25,28 @@ public class Employee  implements Serializable {
 	
 	@ManyToMany(mappedBy = "employees", cascade = CascadeType.ALL)
 	private List<Competency> competencies;
+
+	public int getId() {
+		return id;
+	}
+
+	public Job getJob() {
+		return job;
+	}
+
+	public List<Competency> getCompetencies() {
+		return competencies;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setJob(Job job) {
+		this.job = job;
+	}
+
+	public void setCompetencies(List<Competency> competencies) {
+		this.competencies = competencies;
+	}
 }
