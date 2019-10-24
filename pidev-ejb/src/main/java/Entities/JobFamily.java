@@ -24,6 +24,22 @@ public class JobFamily  implements Serializable {
 	@OneToMany(mappedBy="jobfamily",  cascade = CascadeType.ALL)
 	private List<Job> jobs;
 
+	public JobFamily() {
+	}
+
+	public JobFamily(int id, String name, String description, List<Job> jobs) {
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.jobs = jobs;
+	}
+
+	public JobFamily(String name, String description, List<Job> jobs) {
+		this.name = name;
+		this.description = description;
+		this.jobs = jobs;
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -28,6 +28,26 @@ public class Competency  implements Serializable {
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Employee> employees;
 
+	public Competency() {
+	}
+
+	public Competency(int id, String name, String description, int level, List<Job> jobs, List<Employee> employees) {
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.level = level;
+		this.jobs = jobs;
+		this.employees = employees;
+	}
+
+	public Competency(String name, String description, int level, List<Job> jobs, List<Employee> employees) {
+		this.name = name;
+		this.description = description;
+		this.level = level;
+		this.jobs = jobs;
+		this.employees = employees;
+	}
+
 	public int getId() {
 		return id;
 	}
