@@ -8,10 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 @Entity
-public class JobFamily  implements Serializable {
+public class Competency  implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
  
@@ -20,7 +20,11 @@ public class JobFamily  implements Serializable {
 	private int id;
 	private String name;
 	private String description;
+	private int level;
 	
-	@OneToMany(mappedBy="jobfamily",  cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Job> jobs;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<Employee> employees;
 }
