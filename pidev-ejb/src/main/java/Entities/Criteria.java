@@ -2,6 +2,7 @@ package Entities;
 
 import java.io.Serializable;
 
+import javax.management.loading.PrivateClassLoader;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,29 +11,27 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Commentaire  implements Serializable {
+public class Criteria implements Serializable {
 	
-	public Commentaire(int id, String description, Employee employe, Project projet) {
-		super();
-		this.id = id;
-		this.description = description;
-		this.employe = employe;
-		this.projet = projet;
-	}
-	
-		
-		public Commentaire() {
-		}
 	private static long serialVersionUID = 1L;
  
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String description ; 
-	
+	private String description;
+	private int Note;
 	@ManyToOne
-    @JoinColumn(name = "idEmploye", referencedColumnName = "id", insertable=false, updatable=false)
-	private Employee employe;
+    @JoinColumn(name = "idEvaluationSheet", referencedColumnName = "id", insertable=false, updatable=false)
+	private EvaluationSheet evaluationsheet;
+	public Criteria(int id, String description, int note, EvaluationSheet evaluationsheet) {
+		super();
+		this.id = id;
+		this.description = description;
+		Note = note;
+		this.evaluationsheet = evaluationsheet;
+	}
+	public Criteria() {
+	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -51,17 +50,17 @@ public class Commentaire  implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Employee getEmploye() {
-		return employe;
+	public int getNote() {
+		return Note;
 	}
-	public void setEmploye(Employee employe) {
-		this.employe = employe;
+	public void setNote(int note) {
+		Note = note;
 	}
-	public Project getProjet() {
-		return projet;
+	public EvaluationSheet getEvaluationsheet() {
+		return evaluationsheet;
 	}
-	public void setProjet(Project projet) {
-		this.projet = projet;
+	public void setEvaluationsheet(EvaluationSheet evaluationsheet) {
+		this.evaluationsheet = evaluationsheet;
 	}
-	Project projet;
+
 }
