@@ -2,6 +2,7 @@ package Entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -11,6 +12,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -27,18 +29,20 @@ public class Mission  implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String title;
-	private Date dateD;
-	private Date DateF;
+	private String dateD;
+	private String DateF;
 	private String location;
 	@Enumerated(EnumType.STRING)
 	private Type type;
 	private int valide;
+	private int maxExpense;
 	
 	
-	@OneToOne
-	private Bill bill;
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="mission")
+	private List<Bill> bills;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
+    @JoinColumn(name = "idProject", referencedColumnName = "id")
 	private Project project;
 	
 	@ManyToMany(mappedBy="missions",cascade=CascadeType.ALL)
@@ -54,7 +58,30 @@ public class Mission  implements Serializable {
 		super();
 	}
 
-	public Mission(int id, String title, Date dateD, Date dateF, String location, Type type, int valide) {
+	
+	public Mission(String title, String dateD, String dateF, String location, Type type, int maxExpense) {
+		super();
+		this.title = title;
+		this.dateD = dateD;
+		DateF = dateF;
+		this.location = location;
+		this.type = type;
+		this.maxExpense = maxExpense;
+	}
+
+
+	public Mission(int id ,String title, String dateD, String dateF, String location, Type type, int maxExpense) {
+		this.id=id;
+		this.title = title;
+		this.dateD = dateD;
+		DateF = dateF;
+		this.location = location;
+		this.type = type;
+		this.maxExpense = maxExpense;
+	}
+
+
+	public Mission(int id, String title, String dateD, String dateF, String location, Type type, int valide,int maxExpense) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -63,9 +90,10 @@ public class Mission  implements Serializable {
 		this.location = location;
 		this.type = type;
 		this.valide = valide;
+		this.maxExpense=maxExpense;
 	}
 
-	public Mission(String title, Date dateD, Date dateF, String location, Type type, int valide) {
+	public Mission(String title, String dateD, String dateF, String location, Type type, int valide,int maxExpense) {
 		super();
 		this.title = title;
 		this.dateD = dateD;
@@ -73,6 +101,7 @@ public class Mission  implements Serializable {
 		this.location = location;
 		this.type = type;
 		this.valide = valide;
+		this.maxExpense=maxExpense;
 	}
 
 	public Mission(int id) {
@@ -87,6 +116,12 @@ public class Mission  implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	
+
+
+	
+
 
 	public String getTitle() {
 		return title;
@@ -96,19 +131,19 @@ public class Mission  implements Serializable {
 		this.title = title;
 	}
 
-	public Date getDateD() {
+	public String getDateD() {
 		return dateD;
 	}
 
-	public void setDateD(Date dateD) {
+	public void setDateD(String dateD) {
 		this.dateD = dateD;
 	}
 
-	public Date getDateF() {
+	public String getDateF() {
 		return DateF;
 	}
 
-	public void setDateF(Date dateF) {
+	public void setDateF(String dateF) {
 		DateF = dateF;
 	}
 
@@ -135,12 +170,68 @@ public class Mission  implements Serializable {
 	public void setValide(int valide) {
 		this.valide = valide;
 	}
+	
+	
+
+	public int getMaxExpense() {
+		return maxExpense;
+	}
+
+	public void setMaxExpense(int maxExpense) {
+		this.maxExpense = maxExpense;
+	}
+	
+
+
+	public List<Bill> getBills() {
+		return bills;
+	}
+
+
+	public void setBills(List<Bill> bills) {
+		this.bills = bills;
+	}
+
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public Set<Employee> getEmployes() {
+		return employes;
+	}
+
+	public void setEmployes(Set<Employee> employes) {
+		this.employes = employes;
+	}
+
+	public Set<Compentency> getSkill() {
+		return skill;
+	}
+
+	public void setSkill(Set<Compentency> skill) {
+		this.skill = skill;
+	}
+
+	public Set<MissionRequest> getMissionsRequests() {
+		return missionsRequests;
+	}
+
+	public void setMissionsRequests(Set<MissionRequest> missionsRequests) {
+		this.missionsRequests = missionsRequests;
+	}
 
 	@Override
 	public String toString() {
 		return "Mission [id=" + id + ", title=" + title + ", dateD=" + dateD + ", DateF=" + DateF + ", location="
-				+ location + ", type=" + type + ", valide=" + valide + "]";
+				+ location + ", type=" + type + ", valide=" + valide + ", maxExpense=" + maxExpense + "]";
 	}
+
+	
 	
 	
 	
