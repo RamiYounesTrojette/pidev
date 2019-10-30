@@ -11,5 +11,11 @@ import Entities.Employee;
 @SessionScoped
 public class LoginBean implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private Employee employee;
+	private Employee employee = new Employee();
+	public Employee getEmployee() {
+		return employee;
+	}
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 }

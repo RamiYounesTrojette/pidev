@@ -1,37 +1,40 @@
 package Entities;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import Interfaces.IBaseEntity;
+
 @Entity
-public class Competency  implements Serializable {
-	
+public class Competency implements Serializable, IBaseEntity {
+
 	private static final long serialVersionUID = 1L;
- 
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String description;
 	private int level;
-	
-	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Job> jobs;
-	
-	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Employee> employees;
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Set<Job> jobs;
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Set<Employee> employees;
 
 	public Competency() {
 	}
 
-	public Competency(int id, String name, String description, int level, List<Job> jobs, List<Employee> employees) {
+	public Competency(int id, String name, String description, int level, Set<Job> jobs, Set<Employee> employees) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
@@ -40,7 +43,7 @@ public class Competency  implements Serializable {
 		this.employees = employees;
 	}
 
-	public Competency(String name, String description, int level, List<Job> jobs, List<Employee> employees) {
+	public Competency(String name, String description, int level, Set<Job> jobs, Set<Employee> employees) {
 		this.name = name;
 		this.description = description;
 		this.level = level;
@@ -48,6 +51,7 @@ public class Competency  implements Serializable {
 		this.employees = employees;
 	}
 
+	@Override
 	public int getId() {
 		return id;
 	}
@@ -64,11 +68,11 @@ public class Competency  implements Serializable {
 		return level;
 	}
 
-	public List<Job> getJobs() {
+	public Set<Job> getJobs() {
 		return jobs;
 	}
 
-	public List<Employee> getEmployees() {
+	public Set<Employee> getEmployees() {
 		return employees;
 	}
 
@@ -88,11 +92,11 @@ public class Competency  implements Serializable {
 		this.level = level;
 	}
 
-	public void setJobs(List<Job> jobs) {
+	public void setJobs(Set<Job> jobs) {
 		this.jobs = jobs;
 	}
 
-	public void setEmployees(List<Employee> employees) {
+	public void setEmployees(Set<Employee> employees) {
 		this.employees = employees;
 	}
 }

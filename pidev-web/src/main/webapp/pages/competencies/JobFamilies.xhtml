@@ -2,34 +2,122 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	template="/templates/temp.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="content">
 
-	<ui:param name="page_name" value="Job Families" />
-	<ui:define name="jobfamilies" rendered=#{competenciesBean.LoadJobFamilies()}>
-			<h:form>
-				<h:dataTable value="#{competenciesBean.GetJobFamilies}" var="jobfamily"
-					border="1">
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Name" />
-						</f:facet>
-						<h:outputText value="#{jobfamily.name}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="description" />
-						</f:facet>
-						<h:outputText value="#{jobfamily.description}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Action" />
-						</f:facet>
-						<h:commandButton
-							action="#{competenciesBean.SelectJobFamiliy(jobfamily)}"
-							value="Select" />
-					</h:column>
-				</h:dataTable>
-			</h:form>
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-12">
+
+					<div class="card">
+
+						<div class="card-header card-header-primary card-header-icon">
+
+							<div class="card-icon">
+								<i class="material-icons">assignment</i>
+							</div>
+
+							<h4 class="card-title">Job Families</h4>
+						</div>
+
+						<div class="card-body">
+
+							<div class="material-datatables">
+								<button class="material-icons empty-button job-family-list-add"
+									onclick="$('#Add-JobFamily-Modal').modal()">add_circle_outline</button>
+								<h:form id="jobfamilies-form">
+									<ui:repeat value="#{globalCompetenciesBean.loadJobFamilies()}"
+										var="jobfamily">
+										<div class="job-family-list-item">
+											<h:commandButton class="empty-button job-family-item-name"
+												value="#{jobfamily.name}"
+												action="#{globalCompetenciesBean.selectJobFamiliy(jobfamily)}" />
+											<input type="button" value="delete"
+												class="material-icons empty-button delete"
+												onclick="$('#delete-JobFamily-Modal-#{jobfamily.getId()}').modal()" />
+										</div>
+										<div class="modal fade" id="delete-JobFamily-Modal-#{jobfamily.getId()}"
+											role="dialog">
+
+											<div class="modal-dialog" style="max-width: 500px;">
+												<div class="modal-content">
+													<p>Are you sure you want to delete?</p>
+													<h:commandButton value="delete" class="btn btn-danger"
+														action="#{globalCompetenciesBean.deleteJobFamily(jobfamily.getId())}" />
+													<input type="button" value="cancel"
+														class="material-icons empty-button delete"
+														onclick="$('#delete-JobFamily-Modal-#{jobfamily.getId()}').modal('hide')" />
+												</div>
+											</div>
+										</div>
+									</ui:repeat>
+								</h:form>
+							</div>
+						</div>
+						<!-- end content-->
+					</div>
+					<!--  end card  -->
+				</div>
+				<!-- end col-md-12 -->
+			</div>
+			<!-- end row -->
+		</div>
+		<div class="modal fade" id="Add-JobFamily-Modal" role="dialog">
+
+			<div class="modal-dialog" style="max-width: 900px;">
+				<div class="modal-content">
+					<div class="job-family-add-wizard">
+						<div class="job-family-add-wizard-header">
+							<span></span> <span></span> <span></span>
+
+						</div>
+						<div class="job-family-add-wizard-body">
+							<h:form>
+								<table>
+									<tr>
+										<td><h:inputText value="#{globalCompetenciesBean.name}"
+												a:placeholder="Name" styleClass="login-input"
+												onfocus="this.placeholder = ''"
+												onblur="this.placeholder = 'Name'"></h:inputText></td>
+									</tr>
+
+									<tr>
+										<td><h:inputTextarea
+												value="#{globalCompetenciesBean.description}"
+												a:placeholder="Description" styleClass="login-input"
+												onfocus="this.placeholder = ''"
+												onblur="this.placeholder = 'Description'"></h:inputTextarea></td>
+									</tr>
+									<tr>
+										<td><h:commandButton value="Add Job Family"
+												action="#{globalCompetenciesBean.addJobFamily()}">
+												<f:ajax execute="@form" render="@form" />
+											</h:commandButton></td>
+									</tr>
+								</table>
+							</h:form>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</ui:define>
+
+
+	<ui:define name="scripts">
+		<script>
+			$(document).ready(function() {
+
+			});
+		</script>
 	</ui:define>
 </ui:composition>
+

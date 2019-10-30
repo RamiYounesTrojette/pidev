@@ -1,17 +1,20 @@
 package Entities;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import Interfaces.IBaseEntity;
+
 @Entity
-public class JobFamily  implements Serializable {
+public class JobFamily  implements Serializable, IBaseEntity {
 	
 	private static final long serialVersionUID = 1L;
  
@@ -21,25 +24,26 @@ public class JobFamily  implements Serializable {
 	private String name;
 	private String description;
 	
-	@OneToMany(mappedBy="jobfamily",  cascade = CascadeType.ALL)
-	private List<Job> jobs;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="jobfamily",  cascade = CascadeType.ALL)
+	private Set<Job> jobs;
 
 	public JobFamily() {
 	}
 
-	public JobFamily(int id, String name, String description, List<Job> jobs) {
+	public JobFamily(int id, String name, String description, Set<Job> jobs) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.jobs = jobs;
 	}
 
-	public JobFamily(String name, String description, List<Job> jobs) {
+	public JobFamily(String name, String description, Set<Job> jobs) {
 		this.name = name;
 		this.description = description;
 		this.jobs = jobs;
 	}
 
+	@Override
 	public int getId() {
 		return id;
 	}
@@ -52,7 +56,7 @@ public class JobFamily  implements Serializable {
 		return description;
 	}
 
-	public List<Job> getJobs() {
+	public Set<Job> getJobs() {
 		return jobs;
 	}
 
@@ -68,7 +72,7 @@ public class JobFamily  implements Serializable {
 		this.description = description;
 	}
 
-	public void setJobs(List<Job> jobs) {
+	public void setJobs(Set<Job> jobs) {
 		this.jobs = jobs;
 	}
 }

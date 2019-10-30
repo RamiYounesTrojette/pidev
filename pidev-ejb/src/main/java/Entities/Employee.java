@@ -1,18 +1,21 @@
 package Entities;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import Interfaces.IBaseEntity;
+
 @Entity
-public class Employee  implements Serializable {
+public class Employee  implements Serializable, IBaseEntity {
 	
 	private static final long serialVersionUID = 1L;
  
@@ -23,9 +26,10 @@ public class Employee  implements Serializable {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Job job;
 	
-	@ManyToMany(mappedBy = "employees", cascade = CascadeType.ALL)
-	private List<Competency> competencies;
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "employees", cascade = CascadeType.ALL)
+	private Set<Competency> competencies;
 
+	@Override
 	public int getId() {
 		return id;
 	}
@@ -34,7 +38,7 @@ public class Employee  implements Serializable {
 		return job;
 	}
 
-	public List<Competency> getCompetencies() {
+	public Set<Competency> getCompetencies() {
 		return competencies;
 	}
 
@@ -46,7 +50,7 @@ public class Employee  implements Serializable {
 		this.job = job;
 	}
 
-	public void setCompetencies(List<Competency> competencies) {
+	public void setCompetencies(Set<Competency> competencies) {
 		this.competencies = competencies;
 	}
 }
