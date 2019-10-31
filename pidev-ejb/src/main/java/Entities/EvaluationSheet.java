@@ -1,16 +1,20 @@
 package Entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class EvaluationSheet  implements Serializable {
@@ -30,6 +34,8 @@ public EvaluationSheet(int id, TypeEvaluationSheet typeevaluation, float Score) 
 	this.Score = Score;
 	this.id=id;
 	}
+	
+	
 	public EvaluationSheet(int id, TypeEvaluationSheet typeevaluation, float score, List<Criteria> criteria,
 			Date date) {
 		super();
@@ -42,7 +48,7 @@ public EvaluationSheet(int id, TypeEvaluationSheet typeevaluation, float Score) 
 	
 	
 	public EvaluationSheet() {
-		
+		this.criteria= new ArrayList<Criteria>();
 	}
 	
 	public static long getSerialversionuid() {
@@ -92,7 +98,15 @@ public EvaluationSheet(int id, TypeEvaluationSheet typeevaluation, float Score) 
 public static void setSerialVersionUID(long serialVersionUID) {
 	EvaluationSheet.serialVersionUID = serialVersionUID;
 }
-	@OneToMany(mappedBy="evaluationsheet")
+	@OneToMany(mappedBy="evaluationsheet", fetch = FetchType.EAGER, cascade= CascadeType.ALL)
 	private List<Criteria> criteria;
+	public Employee getEmployee() {
+		return employee;
+	}
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	@OneToOne(mappedBy="evaluationsheet") private Employee employee;
+	
 	Date date;
 }

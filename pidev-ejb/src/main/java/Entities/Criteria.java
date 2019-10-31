@@ -21,8 +21,14 @@ public class Criteria implements Serializable {
 	private String description;
 	private int Note;
 	@ManyToOne
-    @JoinColumn(name = "idEvaluationSheet", referencedColumnName = "id", insertable=false, updatable=false)
+    @JoinColumn(name = "idEvaluationSheet", referencedColumnName = "id", insertable=true, updatable=true)
 	private EvaluationSheet evaluationsheet;
+public Criteria(String description) {
+		
+		
+		this.description = description;
+		
+	}
 	public Criteria(int id, String description, int note, EvaluationSheet evaluationsheet) {
 		super();
 		this.id = id;
@@ -30,6 +36,7 @@ public class Criteria implements Serializable {
 		Note = note;
 		this.evaluationsheet = evaluationsheet;
 	}
+	
 	public Criteria() {
 	}
 	public static long getSerialversionuid() {

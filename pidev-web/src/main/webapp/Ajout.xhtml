@@ -21,7 +21,8 @@
 							<h:selectOneMenu value="#{evaluationsheetBean.typeevaluation}">
 								<f:selectItem itemLabel="Choisir Type" itemValue="" />
 								<f:selectItems value="#{data.type}" />
-							</h:selectOneMenu></td>
+							</h:selectOneMenu>
+							</td>
 					</tr>
 					<tr>
 						<td colspan="2"><h:commandButton value="Ajouter Evaluation"
@@ -54,16 +55,16 @@
 						<f:facet name="header">
 							<h:outputText value="Action" />
 						</f:facet>
-						
 						<h:commandButton
-							action="#{evaluationsheetBean.displayEval(evaluation)}"
+							action="#{evaluationsheetBean.RemoveEval(evaluation.id)}"
+							value="Supprimer" />
+						<h:commandButton
+							action="#{evaluationsheetBean.deleteAllevaluationJPQL(evaluation)}"
 							value="Afficher" />
 					</h:column>
 
 				</h:dataTable>
-				<h:commandButton
-							action="#{evaluationsheetBean.RemoveEval(13)}"
-							value="Supprimer" />
+				
 			</h:form>
 
 		</h:panelGroup>

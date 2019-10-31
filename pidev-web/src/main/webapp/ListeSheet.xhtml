@@ -16,8 +16,7 @@
 					<div class="col-md-12">
 
 						<div class="card">
-							<h:commandButton action="#{evaluationsheetBean.deleteAllevaluationJPQL}" 
-                                    value=""  class="btn btn-info"/>
+							
 						<div class="card-header card-header-text card-header-primary">
                   <div class="card-text">
                     <h4 class="card-title">employee list</h4>
@@ -43,20 +42,20 @@
 								<h:form id="training">
 
 									
-									<h:dataTable value="#{evaluationsheetBean.employes}"
+									<h:dataTable value="#{evaluationsheetBean.evaluations}"
 										id="datatables" class="table table-striped table-no-bordered table-hover"
-										var="employe" >
+										var="evaluation" >
 										<h:column>
 											<f:facet name="header">
-												<h:outputText value="First Name" />
+												<h:outputText value="Score" />
 											</f:facet>
-											<h:outputText value="#{employe.firstname}" />
+											<h:outputText value="#{evaluation.score}" />
 										</h:column>
 										<h:column>
 											<f:facet name="header">
-												<h:outputText value="LastName" />
+												<h:outputText value="Evaluation Type" />
 											</f:facet>
-											<h:outputText value="#{employe.lastname}" />
+											<h:outputText value="#{evaluation.typeevaluation}" />
 										</h:column>
 										
 										
@@ -69,23 +68,21 @@
 											</f:facet>
 											<h:commandButton action="#{evaluationsheetBean.RemoveEval(evaluation.id)}"
                                     value="Delete"  class="btn btn-danger"/> 
-                                    <h:commandButton action="#{criteriaBean.ListeSheet(employe.id)}"
-                                    value="show Last Evaluation"  class="btn btn-primary"/> 
+                                    <h:commandButton action="#{evaluationsheetBean.RemoveEval(evaluation.id)}"
+                                    value="show Last Evaluation"  class="btn btn-info"/> 
                                    
                                      
                                     
                        
 										</h:column>
-										<h:column>
-										<div class="text-center">
+										
+					
+									</h:dataTable>
+									<div class="text-center">
 														<h:commandButton value="Evaluate"
 															action="#{criteriaBean.addForm(employe.id)}"
 															class="btn btn-primary btn-round mt-4" />
 													</div>
-					</h:column>
-									</h:dataTable>
-									 
-									
 									</h:form>
 								</div>
 							</div>
