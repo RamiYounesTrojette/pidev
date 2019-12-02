@@ -29,5 +29,10 @@ public interface IMissionServiceRemote {
 	public int addMissionRequest(MissionRequest missionr, int idMission, Employee e);
 	//public int addBill(Bill bill);
 	void addBill(Bill resto, Bill heb, Bill trans);
+	public int getMissionsByProject2(int projectId);
+	public void deleteRequestMissionById(int RequestmissionId);
+	public List<MissionRequest> getRequestByMission(int missionId);
+	List<Bill> getAllBills();
+	Project getProjectById(int projectId);
 
 }

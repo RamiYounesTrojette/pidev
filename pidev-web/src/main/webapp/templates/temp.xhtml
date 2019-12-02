@@ -5,6 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
 <link rel="stylesheet" type="text/css"
 	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
 <link rel="stylesheet"
@@ -17,7 +18,10 @@
 <link
 	href="#{facesContext.externalContext.requestContextPath}/assets/demo/demo.css"
 	rel="stylesheet" />
-
+	<link
+	href="#{facesContext.externalContext.requestContextPath}/assets/css/jobfamilies.css"
+	rel="stylesheet" />
+</h:head>
 <body>
 <!-- 	<ui:include src="/templates/header.xhtml" /> -->
 	<ui:include src="/templates/menu.xhtml" />
@@ -113,9 +117,9 @@
 			</div>
 			</nav>
 			<!-- End Navbar -->
-			
+			<div class="content">
 			<ui:insert name="content" />
-			
+			</div>
 			<ui:include src="/templates/footer.xhtml" />
 		</div>
 	

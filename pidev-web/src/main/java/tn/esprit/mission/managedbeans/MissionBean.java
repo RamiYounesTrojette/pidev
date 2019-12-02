@@ -196,6 +196,7 @@ public class MissionBean implements Serializable {
 
 	}
 
+	
 	public Project getProject() {
 
 		return project;

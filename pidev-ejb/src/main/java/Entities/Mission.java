@@ -1,7 +1,6 @@
 package Entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -9,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,11 +16,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
 @Entity
+@XmlRootElement(name="mission")
 public class Mission  implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -38,21 +42,23 @@ public class Mission  implements Serializable {
 	private int maxExpense;
 	
 	
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="mission")
+	@OneToMany( mappedBy = "mission", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Bill> bills;
-	
+
 	@ManyToOne
+	@JsonIgnore
     @JoinColumn(name = "idProject", referencedColumnName = "id")
 	private Project project;
 	
 	@ManyToMany(mappedBy="missions",cascade=CascadeType.ALL)
+	@JsonIgnore
 	private Set<Employee> employes;
 	
-	@ManyToMany(mappedBy="missions",cascade=CascadeType.ALL)
-	private Set<Compentency> skill;
 	
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="mission")
-	private Set<MissionRequest> missionsRequests;
+	@JsonIgnore
+	private List<MissionRequest> missionsRequests;
 
 	public Mission() {
 		super();
@@ -109,6 +115,7 @@ public class Mission  implements Serializable {
 		this.id = id;
 	}
 
+
 	public int getId() {
 		return id;
 	}
@@ -117,11 +124,6 @@ public class Mission  implements Serializable {
 		this.id = id;
 	}
 	
-	
-
-
-	
-
 
 	public String getTitle() {
 		return title;
@@ -155,6 +157,7 @@ public class Mission  implements Serializable {
 		this.location = location;
 	}
 
+
 	public Type getType() {
 		return type;
 	}
@@ -162,6 +165,7 @@ public class Mission  implements Serializable {
 	public void setType(Type type) {
 		this.type = type;
 	}
+
 
 	public int getValide() {
 		return valide;
@@ -201,6 +205,7 @@ public class Mission  implements Serializable {
 		this.project = project;
 	}
 
+
 	public Set<Employee> getEmployes() {
 		return employes;
 	}
@@ -209,21 +214,15 @@ public class Mission  implements Serializable {
 		this.employes = employes;
 	}
 
-	public Set<Compentency> getSkill() {
-		return skill;
-	}
 
-	public void setSkill(Set<Compentency> skill) {
-		this.skill = skill;
-	}
-
-	public Set<MissionRequest> getMissionsRequests() {
+	public List<MissionRequest> getMissionsRequests() {
 		return missionsRequests;
 	}
 
-	public void setMissionsRequests(Set<MissionRequest> missionsRequests) {
+	public void setMissionsRequests(List<MissionRequest> missionsRequests) {
 		this.missionsRequests = missionsRequests;
 	}
+
 
 	@Override
 	public String toString() {

@@ -36,11 +36,11 @@ public class LoginBean implements Serializable {
 		String navigateTo = "null";
 		employe = employeService.getEmployeeByEmailAndPassword(login, password);
 		if (employe != null && employe.getRole() == Role.ADMINISTRATOR) {
-			navigateTo = "/pages/admin/test?faces-redirect=true"; loggedIn = true; }
+			navigateTo = "/pages/admin/addProject?faces-redirect=true"; loggedIn = true; }
 		else if (employe != null && employe.getRole() == Role.MANAGER) {
-			navigateTo = "/pages/manager/welcome?faces-redirect=true"; loggedIn = true; }
+			navigateTo = "/pages/admin/Add?faces-redirect=true"; loggedIn = true; }
 		else if (employe != null && employe.getRole() == Role.EMPLOYEE) {
-			navigateTo = "/pages/employee/welcome?faces-redirect=true"; loggedIn = true; }
+			navigateTo = "/pages/admin/Add?faces-redirect=true"; loggedIn = true; }
 		else {
 			FacesContext.getCurrentInstance().addMessage("form:btn", new FacesMessage("Bad Login or password"));
 		}

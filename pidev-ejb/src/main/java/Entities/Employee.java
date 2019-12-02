@@ -9,16 +9,25 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import Interfaces.IBaseEntity;
 
 
 @Entity
-public class Employee  implements Serializable {
+@XmlRootElement(name="employee") 
+
+public class Employee  implements Serializable, IBaseEntity  {
 	
 	private static final long serialVersionUID = 1L;
  
@@ -52,12 +61,26 @@ public class Employee  implements Serializable {
 	private MissionRequest missionRequest;
 	
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="employee")
+	@JsonBackReference
 	private Set<Task> task;
 
 	@ManyToMany(cascade=CascadeType.ALL)
 	private Set<Project> project;
 	@Enumerated(EnumType.STRING)
 	private Role role;
+	
+	@OneToMany(mappedBy="user")
+	@JsonBackReference
+	private  List<plan> planings;
+	
+	@OneToOne private EvaluationSheet evaluationsheet;
+	
+	@ManyToOne(cascade ={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	private Job job;
+	
+	@ManyToMany(mappedBy = "employees", cascade ={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	private Set<Competency> competencies;
+
 
 	public Employee() {}
 	
@@ -183,6 +206,51 @@ public class Employee  implements Serializable {
 	}
 
 
+	public Job getJob() {
+		return job;
+	}
+
+
+	public void setJob(Job job) {
+		this.job = job;
+	}
+
+
+	public Set<Competency> getCompetencies() {
+		return competencies;
+	}
+
+
+	public void setCompetencies(Set<Competency> competencies) {
+		this.competencies = competencies;
+	}
+
+
+	public List<plan> getPlanings() {
+		return planings;
+	}
+
+
+	public void setPlanings(List<plan> planings) {
+		this.planings = planings;
+	}
+
+
+	public EvaluationSheet getEvaluationsheet() {
+		return evaluationsheet;
+	}
+
+
+	public void setEvaluationsheet(EvaluationSheet evaluationsheet) {
+		this.evaluationsheet = evaluationsheet;
+	}
+
+
+	public void setMissions(Set<Mission> missions) {
+		this.missions = missions;
+	}
+
+
 	public Set<Mission> getMissions() {
 		return missions;
 	}
@@ -218,6 +286,12 @@ public class Employee  implements Serializable {
 
 	public void setProject(Set<Project> project) {
 		this.project = project;
+	}
+
+
+	@Override
+	public String toString() {
+		return  firstname;
 	}
 	
 	

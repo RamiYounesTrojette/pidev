@@ -4,7 +4,8 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 	<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/forms/wizard.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Oct 2019 20:19:53 GMT -->
 <!-- Added by HTTrack -->
@@ -19,7 +20,7 @@
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<title>Add Mission</title>
+<title>Missions</title>
 
 <meta
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no"
@@ -133,49 +134,96 @@
 
 			<div class="logo">
 				<a href="http://www.creative-tim.com/" class="simple-text logo-mini">
-					CT </a> <a href="http://www.creative-tim.com/"
-					class="simple-text logo-normal"> Creative Tim </a>
+					AT </a> <a href="http://www.creative-tim.com/"
+					class="simple-text logo-normal"> advyteam</a>
 			</div>
 
 			<div class="sidebar-wrapper">
 
 				<div class="user">
 
-					<div class="photo">
-						<img src="../../assets/img/faces/avatar.jpg" alt="" />
-					</div>
 
 					<div class="user-info">
-						<a data-toggle="collapse" href="#collapseExample" class="username">
-							<span> Tania Andrew <b class="caret" />
-						</span>
-						</a>
-
-						<div class="collapse" id="collapseExample">
-
-							<ul class="nav">
-
-								<li class="nav-item"><a class="nav-link" href="#"> <span
-										class="sidebar-mini"> MP </span> <span class="sidebar-normal">
-											My Profile </span>
-								</a></li>
-
-								<li class="nav-item"><a class="nav-link" href="#"> <span
-										class="sidebar-mini"> EP </span> <span class="sidebar-normal">
-											Edit Profile </span>
-								</a></li>
-
-								<li class="nav-item"><a class="nav-link" href="#"> <span
-										class="sidebar-mini"> S </span> <span class="sidebar-normal">
-											Settings </span>
-								</a></li>
-							</ul>
-						</div>
+						<h:form>
+							<a class="username"> <span> <h:outputText
+										value="Bonjour #{loginBean.employe.firstname}" /> <b
+									class="caret" />
+							</span>
+							</a>
+						</h:form>
+				
 					</div>
 				</div>
 
 				<ul class="nav">
 
+
+					<li class="nav-item "><a class="nav-link"
+						data-toggle="collapse" href="#pagesExamples"> <i
+							class="material-icons">image</i>
+
+							<p>	
+								Training <b class="caret" />
+							</p>
+					</a>
+
+						<div class="collapse" id="pagesExamples">
+
+							<ul class="nav">
+
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/Add.jsf"> <span class="sidebar-mini">
+											AT </span> <span class="sidebar-normal"> Add Training </span>
+								</a></li>
+
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/addCenter.jsf"> <span class="sidebar-mini">
+											ATC</span> <span class="sidebar-normal"> Add Training Center </span>
+								</a></li>
+
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/plan.jsf"> <span class="sidebar-mini">
+											AP </span> <span class="sidebar-normal"> Add Planning </span>
+								</a></li>
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/testt.jsf"> <span class="sidebar-mini">
+											TL </span> <span class="sidebar-normal"> Training List </span>
+								</a></li>
+
+							</ul>
+						</div></li>
+
+					<li class="nav-item "><a class="nav-link"
+						data-toggle="collapse" href="#componentsExamples"> <i
+							class="material-icons">apps</i>
+
+							<p>
+								Evaluation <b class="caret" />
+							</p>
+					</a>
+
+						<div class="collapse" id="componentsExamples">
+
+							<ul class="nav">
+
+							
+									<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/chat.jsf"> <span class="sidebar-mini">
+											Chat </span> <span class="sidebar-normal"> Chat Space </span>
+								</a></li>
+									<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/FormulaireCritere.jsf"> <span class="sidebar-mini">
+											EL </span> <span class="sidebar-normal"> Evaluation Sheet List </span>
+								</a></li>
+
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/test2.jsf"> <span class="sidebar-mini">
+											E </span> <span class="sidebar-normal"> Evaluation </span>
+								</a></li>
+
+
+							</ul>
+						</div></li>
 
 					<li class="nav-item "><a class="nav-link"
 						data-toggle="collapse" href="#formsExamples"> <i
@@ -190,27 +238,89 @@
 
 							<ul class="nav">
 
-								<li class="nav-item "><a class="nav-link" href="/pidev-web">
-										<span class="sidebar-mini"> VM </span> <span
-										class="sidebar-normal"> UnValide Mission </span>
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/missionRequest.jsf"> <span class="sidebar-mini">
+											RM </span> <span class="sidebar-normal"> Request Mission </span>
 								</a></li>
 
 								<li class="nav-item "><a class="nav-link"
-									href="/pidev-web/pages/admin/missionRequest.jsf"> <span
-										class="sidebar-mini"> RM </span> <span class="sidebar-normal">
-											Request Mission </span>
+									href="/pidev-web/pages/admin/addMission.jsf"> <span class="sidebar-mini">
+											AM </span> <span class="sidebar-normal"> Add Mission </span>
 								</a></li>
-
-
-
+								<ul>
 								<li class="nav-item "><a class="nav-link"
-									href="/pidev-web/pages/admin/test.jsf"> <span
-										class="sidebar-mini"> ALL </span> <span class="sidebar-normal">
-											All Mission </span>
+									href="forms/wizard.html"> <span class="sidebar-mini">
+											V </span> <span class="sidebar-normal"> Valide Mission  </span>
 								</a></li>
+								<li class="nav-item "><a class="nav-link"
+									href="forms/wizard.html"> <span class="sidebar-mini">
+											UV </span> <span class="sidebar-normal"> UnValide Mission  </span>
+								</a></li>
+								</ul>
 							</ul>
 						</div></li>
+
+					<li class="nav-item "><a class="nav-link"
+						data-toggle="collapse" href="#tablesExamples"> <i
+							class="material-icons">grid_on</i>
+
+							<p>
+								Career <b class="caret" />
+							</p>
+					</a>
+
+						<div class="collapse" id="tablesExamples">
+
+							<ul class="nav">
+
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/competencies/JobFamilies.jsf"> <span class="sidebar-mini">
+											J </span> <span class="sidebar-normal"> Jobs </span>
+								</a></li>
+
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/competencies/Compentencies.jsf"> <span class="sidebar-mini">
+											C </span> <span class="sidebar-normal"> Competencies </span>
+								</a></li>
+
+							
+							</ul>
+						</div></li>
+
+				
+					<li class="nav-item "><a class="nav-link"
+						data-toggle="collapse" href="#tablesExamples"> <i
+							class="material-icons">widgets</i>
+
+							<p>
+								Projects <b class="caret" />
+							</p>
+					</a>
+
+						<div class="collapse" id="tablesExamples">
+
+							<ul class="nav">
+
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/addProject.jsf"> <span class="sidebar-mini">
+											VP </span> <span class="sidebar-normal">View Projects </span>
+								</a></li>
+
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/employeeTask.jsf"> <span class="sidebar-mini">
+											T </span> <span class="sidebar-normal"> Tasks </span>
+								</a></li>
+
+							
+							</ul>
+						</div></li>
+
+				
+
+				
 				</ul>
+				
+
 			</div>
 		</div>
 
@@ -236,7 +346,7 @@
 				</div>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					aria-controls="navigation-index" aria-expanded="false"
-					aria-label="Toggle navigation">
+					aria-label="Toggle navigation" >
 					<span class="sr-only">Toggle navigation</span> <span
 						class="navbar-toggler-icon icon-bar" /> <span
 						class="navbar-toggler-icon icon-bar" /> <span
@@ -307,8 +417,243 @@
 			<!-- End Navbar -->
 
 			<div class="content">
+				<div class="container-fluid">
+					<h:form id="test">
+						<div class="container-fluid">
 
-				
+							<div class="row" >
+
+								<c:forEach items="#{missionBean.missionsValide}" var="mission">
+									<div class="col-md-4">
+
+										<div class="card card-profile" >
+
+											
+
+											<div class="card-body">
+
+
+												<h6 class="card-category text-gray">
+   
+  
+													<h:outputText value="#{mission.title}" ></h:outputText>
+												</h6>
+
+												<h4 class="card-title"></h4>
+
+												<p class="card-description">
+													<h:outputText value="#{mission.type}"></h:outputText>
+												</p>
+
+												<h3 class="card-title"></h3>
+
+												<p class="card-description">
+													<h:outputText
+														value=" #{mission.valide == 1 ? 'Validée' : 'Non Validée'}" ></h:outputText>
+												</p>
+
+												<h:commandButton disabled="#{mission.valide == 1 ? 'true' : 'false'}" 
+													class="btn btn-danger btn-round btn-sm"
+													action="#{missionBean.removeMission(mission.id)}"
+													value="Delete" />
+
+												<h:commandButton styleClass="btn btn-info btn-round btn-sm"
+													action="#{missionBean.displayMission(mission)}"
+													value="Details" />
+
+											
+												<button class="btn btn-info btn-round btn-sm"
+													data-toggle="modal" data-target="#myModal">Add
+													Bill</button>
+
+												<div id="myModal" class="modal fade" role="dialog">
+													<div class="modal-dialog">
+<h:form >
+														<!-- Modal content-->
+														<div class="modal-content">
+															<div class="modal-header">
+																<button type="button" class="close" data-dismiss="modal">&times;</button>
+																<h4 class="modal-title">Choose your Bills</h4>
+															</div>
+															<div class="modal-body">
+																<!--      Wizard container        -->
+
+																	<!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
+																	<div class="card-header text-center">
+																		<h3 class="card-title"></h3>
+																	</div>
+																	<div class="wizard-navigation">
+																		<ul class="nav nav-pills">
+																			<li class="nav-item"><a class="nav-link active"
+																				href="#about" data-toggle="tab" role="tab">
+																					Hebergement </a></li>
+																			<li class="nav-item"><a class="nav-link"
+																				href="#account" data-toggle="tab" role="tab">
+																					Transport </a></li>
+																			<li class="nav-item"><a class="nav-link"
+																				href="#address" data-toggle="tab" role="tab">
+																					Restauration </a></li>
+																		</ul>
+																	</div>
+																	<div class="card-body">
+																		<div class="tab-content">
+																			<div class="tab-pane active" id="about">
+																				<div class="row justify-content-center">
+
+
+																					<div class="form-group">
+																						<h:inputText class="form-control"  value="#{billBean.heb.somme}"
+																							name="heber" number="true" required="true" />
+																					</div>
+
+																					<div class="col-md-4 col-sm-4">
+																						<h4 class="title">Upload Justification</h4>
+																						<div class="fileinput fileinput-new text-center"
+																							data-provides="fileinput">
+																							<div class="fileinput-new thumbnail">
+																								<img
+																									src="../../assets/img/image_placeholder.jpg"
+																									alt="..."></img>
+																							</div>
+																							<div
+																								class="fileinput-preview fileinput-exists thumbnail"></div>
+																							<div>
+																								<span class="btn btn-rose btn-round btn-file">
+																									<span class="fileinput-new">Select image</span>
+																									<span class="fileinput-exists">Change</span> <input
+																									type="file" name="..." value="#{billBean.heb.image}" />
+																								</span> <a href="#pablo"
+																									class="btn btn-danger btn-round fileinput-exists"
+																									data-dismiss="fileinput"><i
+																									class="fa fa-times"></i> Remove</a>
+																							</div>
+																						</div>
+																					</div>
+
+																				</div>
+																			</div>
+																			<div class="tab-pane" id="account">
+																				<div class="row justify-content-center">
+
+																					<div class="form-group">
+																						<h:inputText class="form-control" type="number"  value="#{billBean.trans.somme}"
+																							name="transport" number="true" required="true" />
+																					</div>
+
+																					<div class="col-md-4 col-sm-4">
+																						<h4 class="title">Upload Justification</h4>
+																						<div class="fileinput fileinput-new text-center"
+																							data-provides="fileinput">
+																							<div class="fileinput-new thumbnail">
+																								<img
+																									src="../../assets/img/image_placeholder.jpg"
+																									alt="..."></img>
+																							</div>
+																							<div
+																								class="fileinput-preview fileinput-exists thumbnail"></div>
+																							<div>
+																								<span class="btn btn-rose btn-round btn-file">
+																									<span class="fileinput-new">Select image</span>
+																									<span class="fileinput-exists">Change</span> <h:inputText value= "#{billBean.trans.image}"
+																									type="file" name="..." />
+																								</span> <a href="#pablo"
+																									class="btn btn-danger btn-round fileinput-exists"
+																									data-dismiss="fileinput"><i
+																									class="fa fa-times"></i> Remove</a>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="tab-pane" id="address">
+																				<div class="row justify-content-center">
+
+																					<div class="form-group">
+																						<h:inputText class="form-control" type="number" value="#{billBean.resto.somme}"
+																							name="restauration" number="true" required="true" />
+																					</div>
+
+																					<div class="col-md-4 col-sm-4">
+																						<h4 class="title">Upload Justification</h4>
+																						<div class="fileinput fileinput-new text-center"
+																							data-provides="fileinput">
+																							<div class="fileinput-new thumbnail">
+																								<img
+																									src="../../assets/img/image_placeholder.jpg"
+																									alt="..."></img>
+																							</div>
+																							<div
+																								class="fileinput-preview fileinput-exists thumbnail"></div>
+																							<div>
+																								<span class="btn btn-rose btn-round btn-file">
+																									<span class="fileinput-new">Select image</span>
+																									<span class="fileinput-exists">Change</span> <h:inputText value="#{billBean.resto.image}"
+																									type="file" name="..." />
+																								</span> <a href="#pablo"
+																									class="btn btn-danger btn-round fileinput-exists"
+																									data-dismiss="fileinput"><i
+																									class="fa fa-times"></i> Remove</a>
+																							</div>
+																						</div>
+																					</div>
+
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
+																		
+																<!-- wizard container -->
+															</div>
+															<div class="modal-footer">
+
+																<!--									
+                    <div class="mr-auto">
+                      <input type="button" class="btn btn-previous btn-fill btn-default btn-wd disabled" name="previous" value="Previous"></input>
+                    </div>
+                    <div class="ml-auto">
+                      <input type="button" class="btn btn-next btn-fill btn-rose btn-wd" name="next" value="Next"></input>
+                      <input type="button" class="btn btn-finish btn-fill btn-rose btn-wd" name="finish" value="Finish" style="display: none;"></input>
+                    </div>
+                    <div class="clearfix"></div>
+                   -->
+																<button type="button" class="btn btn-default"
+																	data-dismiss="modal">Close</button>
+
+																<h:commandButton styleClass="btn btn-info btn-round btn-sm" disabled=""
+													action="#{billBean.addBills(mission)}"
+													value="Send" />
+
+															</div>
+														</div>
+
+																</h:form>
+													</div>
+												</div>
+
+											</div>
+										</div>
+
+									</div>
+								</c:forEach>
+
+							</div>
+						</div>
+					</h:form>
+
+
+
+
+					<div style="align-content: right:;">
+						<h:link rel="alternate" hreflang="en-us"
+							outcome="/pages/admin/addMission.xhtml}"
+							class="btn btn-green btn-round btn-sm" disabled="#{loginBean.employe.role != ADMINISTRATOR  ? 'true' : 'false'}" >Add Mission </h:link>
+					</div>
+
+
+
+				</div>
+
 			</div>
 			<footer class="footer">
 
@@ -531,7 +876,6 @@
 
 	<script src="../../assets/js/plugins/chartist.min.js"></script>
 	<!--  Notifications Plugin    -->
-
 	<script src="../../assets/js/plugins/bootstrap-notify.js"></script>
 	<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 
@@ -768,12 +1112,6 @@
       if ($('.slider').length != 0) {
         md.initSliders();
       }
-    });
-  </script>
-	<script>
-    $(document).ready(function() {
-      // Initialise Sweet Alert library
-      demo.showSwal();
     });
   </script>
 </body>

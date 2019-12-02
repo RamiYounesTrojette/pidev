@@ -21,7 +21,7 @@
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<title>Material Dashboard PRO by Creative Tim</title>
+<title>Mission Request</title>
 
 <meta
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no"
@@ -134,49 +134,96 @@
 
 			<div class="logo">
 				<a href="http://www.creative-tim.com/" class="simple-text logo-mini">
-					CT </a> <a href="http://www.creative-tim.com/"
-					class="simple-text logo-normal"> Creative Tim </a>
+					AT </a> <a href="http://www.creative-tim.com/"
+					class="simple-text logo-normal"> Advyteam</a>
 			</div>
 
 			<div class="sidebar-wrapper">
 
 				<div class="user">
 
-					<div class="photo">
-						<img src="../../assets/img/faces/avatar.jpg" alt="" />
-					</div>
+					
 
 					<div class="user-info">
-						<a data-toggle="collapse" href="#collapseExample" class="username">
-							<span> Tania Andrew <b class="caret" />
-						</span>
-						</a>
+						<a class="username"> <span> <h:outputText
+										value="Bonjour #{loginBean.employe.firstname}" /> <b
+									class="caret" />
+							</span>
+							</a>
 
-						<div class="collapse" id="collapseExample">
-
-							<ul class="nav">
-
-								<li class="nav-item"><a class="nav-link" href="#"> <span
-										class="sidebar-mini"> MP </span> <span class="sidebar-normal">
-											My Profile </span>
-								</a></li>
-
-								<li class="nav-item"><a class="nav-link" href="#"> <span
-										class="sidebar-mini"> EP </span> <span class="sidebar-normal">
-											Edit Profile </span>
-								</a></li>
-
-								<li class="nav-item"><a class="nav-link" href="#"> <span
-										class="sidebar-mini"> S </span> <span class="sidebar-normal">
-											Settings </span>
-								</a></li>
-							</ul>
-						</div>
 					</div>
 				</div>
 
+							
+				<ul class="nav">
+
+
+					<li class="nav-item "><a class="nav-link"
+						data-toggle="collapse" href="#pagesExamples"> <i
+							class="material-icons">image</i>
+
+							<p>	
+								Training <b class="caret" />
+							</p>
+					</a>
+
+						<div class="collapse" id="pagesExamples">
+
 							<ul class="nav">
 
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/Add.jsf"> <span class="sidebar-mini">
+											AT </span> <span class="sidebar-normal"> Add Training </span>
+								</a></li>
+
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/addCenter.jsf"> <span class="sidebar-mini">
+											ATC</span> <span class="sidebar-normal"> Add Training Center </span>
+								</a></li>
+
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/plan.jsf"> <span class="sidebar-mini">
+											AP </span> <span class="sidebar-normal"> Add Planning </span>
+								</a></li>
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/testt.jsf"> <span class="sidebar-mini">
+											TL </span> <span class="sidebar-normal"> Training List </span>
+								</a></li>
+
+							</ul>
+						</div></li>
+
+					<li class="nav-item "><a class="nav-link"
+						data-toggle="collapse" href="#componentsExamples"> <i
+							class="material-icons">apps</i>
+
+							<p>
+								Evaluation <b class="caret" />
+							</p>
+					</a>
+
+						<div class="collapse" id="componentsExamples">
+
+							<ul class="nav">
+
+							
+									<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/chat.jsf"> <span class="sidebar-mini">
+											Chat </span> <span class="sidebar-normal"> Chat Space </span>
+								</a></li>
+									<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/FormulaireCritere.jsf"> <span class="sidebar-mini">
+											EL </span> <span class="sidebar-normal"> Evaluation Sheet List </span>
+								</a></li>
+
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/test2.jsf"> <span class="sidebar-mini">
+											E </span> <span class="sidebar-normal"> Evaluation </span>
+								</a></li>
+
+
+							</ul>
+						</div></li>
 
 					<li class="nav-item "><a class="nav-link"
 						data-toggle="collapse" href="#formsExamples"> <i
@@ -191,26 +238,86 @@
 
 							<ul class="nav">
 
-								<li class="nav-item "><a class="nav-link" href="/pidev-web">
-										<span class="sidebar-mini"> VM </span> <span
-										class="sidebar-normal"> Non Valide Mission </span>
-								</a></li>
-
 								<li class="nav-item "><a class="nav-link"
 									href="/pidev-web/pages/admin/missionRequest.jsf"> <span class="sidebar-mini">
 											RM </span> <span class="sidebar-normal"> Request Mission </span>
 								</a></li>
 
-
 								<li class="nav-item "><a class="nav-link"
-									href="/pidev-web/pages/admin/test.jsf"> <span class="sidebar-mini">
-											ALL </span> <span class="sidebar-normal"> All Mission </span>
+									href="/pidev-web/pages/admin/addMission.jsf"> <span class="sidebar-mini">
+											AM </span> <span class="sidebar-normal"> Add Mission </span>
 								</a></li>
+								<ul>
+								<li class="nav-item "><a class="nav-link"
+									href="forms/wizard.html"> <span class="sidebar-mini">
+											V </span> <span class="sidebar-normal"> Valide Mission  </span>
+								</a></li>
+								<li class="nav-item "><a class="nav-link"
+									href="forms/wizard.html"> <span class="sidebar-mini">
+											UV </span> <span class="sidebar-normal"> UnValide Mission  </span>
+								</a></li>
+								</ul>
 							</ul>
 						</div></li>
 
-		
+					<li class="nav-item "><a class="nav-link"
+						data-toggle="collapse" href="#tablesExamples"> <i
+							class="material-icons">grid_on</i>
 
+							<p>
+								Career <b class="caret" />
+							</p>
+					</a>
+
+						<div class="collapse" id="tablesExamples">
+
+							<ul class="nav">
+
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/competencies/JobFamilies.jsf"> <span class="sidebar-mini">
+											J </span> <span class="sidebar-normal"> Jobs </span>
+								</a></li>
+
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/competencies/Compentencies.jsf"> <span class="sidebar-mini">
+											C </span> <span class="sidebar-normal"> Competencies </span>
+								</a></li>
+
+							
+							</ul>
+						</div></li>
+
+				
+					<li class="nav-item "><a class="nav-link"
+						data-toggle="collapse" href="#tablesExamples"> <i
+							class="material-icons">widgets</i>
+
+							<p>
+								Projects <b class="caret" />
+							</p>
+					</a>
+
+						<div class="collapse" id="tablesExamples">
+
+							<ul class="nav">
+
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/addProject.jsf"> <span class="sidebar-mini">
+											VP </span> <span class="sidebar-normal">View Projects </span>
+								</a></li>
+
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/employeeTask.jsf"> <span class="sidebar-mini">
+											T </span> <span class="sidebar-normal"> Tasks </span>
+								</a></li>
+
+							
+							</ul>
+						</div></li>
+
+				
+
+				
 				</ul>
 			</div>
 		</div>
@@ -319,11 +426,7 @@
 
 							<div class="card card-profile">
 
-								<div class="card-avatar">
-									<a href="#pablo"> <img class="img"
-										src="../../assets/img/faces/marc.jpg" alt="" />
-									</a>
-								</div>
+								
 
 								<div class="card-body">
 

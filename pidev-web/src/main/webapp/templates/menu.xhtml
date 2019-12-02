@@ -1,3 +1,9 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
 <div class="sidebar" data-color="rose" data-background-color="black"
 			data-image="#{facesContext.externalContext.requestContextPath}/assets/img/sidebar-1.jpg">
 			<!--
@@ -8,25 +14,22 @@
 
 			<div class="logo">
 				<a href="http://www.creative-tim.com/" class="simple-text logo-mini">
-					CT </a> <a href="http://www.creative-tim.com/"
-					class="simple-text logo-normal"> Creative Tim </a>
+					AT </a> <a href="http://www.creative-tim.com/"
+					class="simple-text logo-normal"> Advyteam </a>
 			</div>
 
 			<div class="sidebar-wrapper">
 
 				<div class="user">
 
-					<div class="photo">
-						<img
-							src="#{facesContext.externalContext.requestContextPath}/assets/img/faces/avatar.jpg"
-							alt="" />
-					</div>
 
 					<div class="user-info">
-						<a data-toggle="collapse" href="#collapseExample" class="username">
-							<span> Tania Andrew <b class="caret" />
-						</span>
-						</a>
+						<a class="username"> <span>
+						 <h:outputText
+										value="Bonjour #{loginBean.employe.firstname}" /> <b
+									class="caret" />
+							</span>
+							</a>
 
 						<div class="collapse" id="collapseExample">
 
@@ -53,18 +56,14 @@
 
 				<ul class="nav">
 
-					<li class="nav-item active "><a class="nav-link"
-						href="Ajout.jsf"> <i class="material-icons">dashboard</i>
-
-							<p>Dashboard</p>
-					</a></li>
+				
 
 					<li class="nav-item "><a class="nav-link"
 						data-toggle="collapse" href="#pagesExamples"> <i
 							class="material-icons">image</i>
 
 							<p>	
-								Pages <b class="caret" />
+								Training <b class="caret" />
 							</p>
 					</a>
 
@@ -73,44 +72,24 @@
 							<ul class="nav">
 
 								<li class="nav-item "><a class="nav-link"
-									href="pages/pricing.html"> <span class="sidebar-mini">
-											P </span> <span class="sidebar-normal"> Pricing </span>
+									href="/pidev-web/pages/admin/Add.jsf"> <span class="sidebar-mini">
+											AT </span> <span class="sidebar-normal"> Add Training </span>
 								</a></li>
 
 								<li class="nav-item "><a class="nav-link"
-									href="pages/rtl.html"> <span class="sidebar-mini">
-											RS </span> <span class="sidebar-normal"> RTL Support </span>
+									href="/pidev-web/pages/admin/addCenter.jsf"> <span class="sidebar-mini">
+											ATC</span> <span class="sidebar-normal"> Add Training Center </span>
 								</a></li>
 
 								<li class="nav-item "><a class="nav-link"
-									href="pages/timeline.html"> <span class="sidebar-mini">
-											T </span> <span class="sidebar-normal"> Timeline </span>
+									href="/pidev-web/pages/admin/plan.jsf"> <span class="sidebar-mini">
+											AP </span> <span class="sidebar-normal"> Add Planning </span>
+								</a></li>
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/testt.jsf"> <span class="sidebar-mini">
+											TL </span> <span class="sidebar-normal"> Training List </span>
 								</a></li>
 
-								<li class="nav-item "><a class="nav-link"
-									href="pages/login.html"> <span class="sidebar-mini">
-											LP </span> <span class="sidebar-normal"> Login Page </span>
-								</a></li>
-
-								<li class="nav-item "><a class="nav-link"
-									href="pages/register.html"> <span class="sidebar-mini">
-											RP </span> <span class="sidebar-normal"> Register Page </span>
-								</a></li>
-
-								<li class="nav-item "><a class="nav-link"
-									href="pages/lock.html"> <span class="sidebar-mini">
-											LSP </span> <span class="sidebar-normal"> Lock Screen Page </span>
-								</a></li>
-
-								<li class="nav-item "><a class="nav-link"
-									href="pages/user.html"> <span class="sidebar-mini">
-											UP </span> <span class="sidebar-normal"> User Profile </span>
-								</a></li>
-
-								<li class="nav-item "><a class="nav-link"
-									href="pages/error.html"> <span class="sidebar-mini">
-											E </span> <span class="sidebar-normal"> Error Page </span>
-								</a></li>
 							</ul>
 						</div></li>
 
@@ -119,7 +98,7 @@
 							class="material-icons">apps</i>
 
 							<p>
-								Components <b class="caret" />
+								Evaluation <b class="caret" />
 							</p>
 					</a>
 
@@ -127,61 +106,22 @@
 
 							<ul class="nav">
 
-								<li class="nav-item "><a class="nav-link"
-									data-toggle="collapse" href="#componentsCollapse"> <span
-										class="sidebar-mini"> MLT </span> <span class="sidebar-normal">
-											Multi Level Collapse <b class="caret" />
-									</span>
-								</a>
-
-									<div class="collapse" id="componentsCollapse">
-
-										<ul class="nav">
-
-											<li class="nav-item "><a class="nav-link" href="#0">
-													<span class="sidebar-mini"> E </span> <span
-													class="sidebar-normal"> Example </span>
-											</a></li>
-										</ul>
-									</div></li>
-
-								<li class="nav-item "><a class="nav-link"
-									href="components/buttons.html"> <span class="sidebar-mini">
-											B </span> <span class="sidebar-normal"> Buttons </span>
+							
+									<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/chat.jsf"> <span class="sidebar-mini">
+											Chat </span> <span class="sidebar-normal"> Chat Space </span>
+								</a></li>
+									<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/FormulaireCritere.jsf"> <span class="sidebar-mini">
+											EL </span> <span class="sidebar-normal"> Evaluation Sheet List </span>
 								</a></li>
 
 								<li class="nav-item "><a class="nav-link"
-									href="components/grid.html"> <span class="sidebar-mini">
-											GS </span> <span class="sidebar-normal"> Grid System </span>
+									href="/pidev-web/pages/admin/test2.jsf"> <span class="sidebar-mini">
+											E </span> <span class="sidebar-normal"> Evaluation </span>
 								</a></li>
 
-								<li class="nav-item "><a class="nav-link"
-									href="components/panels.html"> <span class="sidebar-mini">
-											P </span> <span class="sidebar-normal"> Panels </span>
-								</a></li>
 
-								<li class="nav-item "><a class="nav-link"
-									href="components/sweet-alert.html"> <span
-										class="sidebar-mini"> SA </span> <span class="sidebar-normal">
-											Sweet Alert </span>
-								</a></li>
-
-								<li class="nav-item "><a class="nav-link"
-									href="components/notifications.html"> <span
-										class="sidebar-mini"> N </span> <span class="sidebar-normal">
-											Notifications </span>
-								</a></li>
-
-								<li class="nav-item "><a class="nav-link"
-									href="components/icons.html"> <span class="sidebar-mini">
-											I </span> <span class="sidebar-normal"> Icons </span>
-								</a></li>
-
-								<li class="nav-item "><a class="nav-link"
-									href="components/typography.html"> <span
-										class="sidebar-mini"> T </span> <span class="sidebar-normal">
-											Typography </span>
-								</a></li>
 							</ul>
 						</div></li>
 
@@ -199,12 +139,7 @@
 							<ul class="nav">
 
 								<li class="nav-item "><a class="nav-link"
-									href="forms/regular.html"> <span class="sidebar-mini">
-											VM </span> <span class="sidebar-normal"> Valide Mission </span>
-								</a></li>
-
-								<li class="nav-item "><a class="nav-link"
-									href="forms/extended.html"> <span class="sidebar-mini">
+									href="/pidev-web/pages/admin/missionRequest.jsf"> <span class="sidebar-mini">
 											RM </span> <span class="sidebar-normal"> Request Mission </span>
 								</a></li>
 
@@ -212,11 +147,16 @@
 									href="/pidev-web/pages/admin/addMission.jsf"> <span class="sidebar-mini">
 											AM </span> <span class="sidebar-normal"> Add Mission </span>
 								</a></li>
-
+								<ul>
 								<li class="nav-item "><a class="nav-link"
 									href="forms/wizard.html"> <span class="sidebar-mini">
-											ALL </span> <span class="sidebar-normal"> All Mission </span>
+											V </span> <span class="sidebar-normal"> Valide Mission  </span>
 								</a></li>
+								<li class="nav-item "><a class="nav-link"
+									href="forms/wizard.html"> <span class="sidebar-mini">
+											UV </span> <span class="sidebar-normal"> UnValide Mission  </span>
+								</a></li>
+								</ul>
 							</ul>
 						</div></li>
 
@@ -225,7 +165,7 @@
 							class="material-icons">grid_on</i>
 
 							<p>
-								Tables <b class="caret" />
+								Career <b class="caret" />
 							</p>
 					</a>
 
@@ -234,29 +174,25 @@
 							<ul class="nav">
 
 								<li class="nav-item "><a class="nav-link"
-									href="tables/regular.html"> <span class="sidebar-mini">
-											RT </span> <span class="sidebar-normal"> Regular Tables </span>
+									href="/pidev-web/pages/competencies/JobFamilies.jsf"> <span class="sidebar-mini">
+											J </span> <span class="sidebar-normal"> Jobs </span>
 								</a></li>
 
 								<li class="nav-item "><a class="nav-link"
-									href="tables/extended.html"> <span class="sidebar-mini">
-											ET </span> <span class="sidebar-normal"> Extended Tables </span>
+									href="/pidev-web/pages/competencies/Compentencies.jsf"> <span class="sidebar-mini">
+											C </span> <span class="sidebar-normal"> Competencies </span>
 								</a></li>
 
-								<li class="nav-item "><a class="nav-link"
-									href="tables/datatables.net.html"> <span
-										class="sidebar-mini"> DT </span> <span class="sidebar-normal">
-											DataTables.net </span>
-								</a></li>
+							
 							</ul>
 						</div></li>
 
 					<li class="nav-item "><a class="nav-link"
 						data-toggle="collapse" href="#mapsExamples"> <i
-							class="material-icons">place</i>
+							class="material-icons">widgets</i>
 
 							<p>
-								Maps <b class="caret" />
+								Projects <b class="caret" />
 							</p>
 					</a>
 
@@ -265,39 +201,21 @@
 							<ul class="nav">
 
 								<li class="nav-item "><a class="nav-link"
-									href="maps/google.html"> <span class="sidebar-mini">
-											GM </span> <span class="sidebar-normal"> Google Maps </span>
+									href="/pidev-web/pages/admin/addProject.jsf"> <span class="sidebar-mini">
+											VP </span> <span class="sidebar-normal"> View Projects </span>
 								</a></li>
 
 								<li class="nav-item "><a class="nav-link"
-									href="maps/fullscreen.html"> <span class="sidebar-mini">
-											FSM </span> <span class="sidebar-normal"> Full Screen Map </span>
+									href="/pidev-web/pages/admin/employeeTask.jsf"> <span class="sidebar-mini">
+											T </span> <span class="sidebar-normal"> Tasks </span>
 								</a></li>
 
-								<li class="nav-item "><a class="nav-link"
-									href="maps/vector.html"> <span class="sidebar-mini">
-											VM </span> <span class="sidebar-normal"> Vector Map </span>
-								</a></li>
+								
 							</ul>
 						</div></li>
 
-					<li class="nav-item "><a class="nav-link" href="widgets.html">
-							<i class="material-icons">widgets</i>
 
-							<p>Widgets</p>
-					</a></li>
-
-					<li class="nav-item "><a class="nav-link" href="charts.html">
-							<i class="material-icons">timeline</i>
-
-							<p>Charts</p>
-					</a></li>
-
-					<li class="nav-item "><a class="nav-link" href="calendar.html">
-							<i class="material-icons">date_range</i>
-
-							<p>Calendar</p>
-					</a></li>
 				</ul>
 			</div>
 		</div>
+</ui:composition>

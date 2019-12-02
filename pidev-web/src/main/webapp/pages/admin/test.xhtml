@@ -173,6 +173,7 @@
 											Settings </span>
 								</a></li>
 							</ul>
+					
 						</div>
 					</div>
 				</div>
@@ -215,9 +216,33 @@
 							</ul>
 						</div></li>
 
+				<li class="nav-item "><a class="nav-link"
+						data-toggle="collapse" href="#tablesExamples"> <i
+							class="material-icons">grid_on</i>
 
+							<p>
+								Projects <b class="caret" />
+							</p>
+					</a>
+
+						<div class="collapse" id="tablesExamples">
+
+							<ul class="nav">
+
+								<li class="nav-item "><a class="nav-link"
+									href="/pidev-web/pages/admin/addProject.jsf"> <span class="sidebar-mini">
+											VP </span> <span class="sidebar-normal"> View Projects </span>
+								</a></li>
+
+
+								
+							</ul>
+						</div></li>
 
 				</ul>
+				
+				
+
 			</div>
 		</div>
 
@@ -243,7 +268,7 @@
 				</div>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					aria-controls="navigation-index" aria-expanded="false"
-					aria-label="Toggle navigation">
+					aria-label="Toggle navigation" >
 					<span class="sr-only">Toggle navigation</span> <span
 						class="navbar-toggler-icon icon-bar" /> <span
 						class="navbar-toggler-icon icon-bar" /> <span
@@ -318,13 +343,12 @@
 					<h:form id="test">
 						<div class="container-fluid">
 
-							<div class="row">
+							<div class="row" >
 
-								<c:forEach items="#{missionBean.getMissionByProjects(1)}"
-									var="mission">
+								<c:forEach items="#{projectBean.missions}" var="mission">
 									<div class="col-md-4">
 
-										<div class="card card-profile">
+										<div class="card card-profile" >
 
 											<div class="card-avatar">
 												<a href="#pablo"> <img class="img"
@@ -336,7 +360,9 @@
 
 
 												<h6 class="card-category text-gray">
-													<h:outputText value="#{mission.title}"></h:outputText>
+   
+  
+													<h:outputText value="#{mission.title}" ></h:outputText>
 												</h6>
 
 												<h4 class="card-title"></h4>
@@ -349,7 +375,7 @@
 
 												<p class="card-description">
 													<h:outputText
-														value=" #{mission.valide == 1 ? 'Validée' : 'Non Validée'}"></h:outputText>
+														value=" #{mission.valide == 1 ? 'Validée' : 'Non Validée'}" ></h:outputText>
 												</p>
 
 												<h:commandButton
@@ -368,7 +394,7 @@
 
 												<div id="myModal" class="modal fade" role="dialog">
 													<div class="modal-dialog">
-<h:form >
+													<h:form >
 														<!-- Modal content-->
 														<div class="modal-content">
 															<div class="modal-header">
@@ -419,7 +445,7 @@
 																								class="fileinput-preview fileinput-exists thumbnail"></div>
 																							<div>
 																								<span class="btn btn-rose btn-round btn-file">
-																									<span class="fileinput-new">Select image</span>
+																									<span class="fileinput-new">Select image</span> 
 																									<span class="fileinput-exists">Change</span> <input
 																									type="file" name="..." value="#{billBean.heb.image}" />
 																								</span> <a href="#pablo"
@@ -446,7 +472,7 @@
 																							data-provides="fileinput">
 																							<div class="fileinput-new thumbnail">
 																								<img
-																									src="#{billBean.trans.image}"
+																									src="../../assets/img/image_placeholder.jpg"
 																									alt="..."></img>
 																							</div>
 																							<div
@@ -479,7 +505,7 @@
 																							data-provides="fileinput">
 																							<div class="fileinput-new thumbnail">
 																								<img
-																									src="#{billBean.resto.image}"
+																									src="../../assets/img/image_placeholder.jpg"
 																									alt="..."></img>
 																							</div>
 																							<div

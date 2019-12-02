@@ -9,8 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.ws.rs.Path;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
+@XmlRootElement(name="Requestmission")
 public class MissionRequest  implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -22,9 +27,11 @@ public class MissionRequest  implements Serializable {
 	private int affect;
 	
 	@OneToOne
+	@JsonBackReference
 	private Employee employee;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
+	@JsonBackReference
 	private Mission mission;
 
 	public MissionRequest() {

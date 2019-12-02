@@ -5,109 +5,130 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-
-
-
 @Entity
-public class Task  implements Serializable {
+public class Task implements Serializable {
 
-private static final long serialVersionUID = 1L;
- 
-@Id
-@GeneratedValue(strategy=GenerationType.IDENTITY)
-private int id;
-private String title ;
-private String description ;
-private Date startDate ;
-private Date endDate ;
+	private static final long serialVersionUID = 1L;
 
-public Task(int id, String title, String description, Date startDate, Date endDate) {
-super();
-this.id = id;
-this.title = title;
-this.description = description;
-this.startDate = startDate;
-this.endDate = endDate;
-}
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String title;
+	private String description;
+	private String startDate;
+	private String endDate;
+	@Enumerated(EnumType.STRING)
+	private Status status;
 
+	public Task(int id, String title, String description, String startDate, String endDate, Status status) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.status = status;
+	}
 
+	public Task(String title, String description, String startDate, String endDate, Status status) {
+		super();
+		this.title = title;
+		this.description = description;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.status = status;
+	}
 
-public Task(String title, String description) {
-super();
-this.title = title;
-this.description = description;
-}
+	public Task(String title, String description) {
+		super();
+		this.title = title;
+		this.description = description;
+	}
 
+	public Task() {
+	}
 
+	public int getId() {
+		return id;
+	}
 
-public Task() {
-}
+	public void setId(int id) {
+		this.id = id;
+	}
 
-public int getId() {
-return id;
-}
+	public String getTitle() {
+		return title;
+	}
 
-public void setId(int id) {
-this.id = id;
-}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-public String getTitle() {
-return title;
-}
+	public String getDescription() {
+		return description;
+	}
 
-public void setTitle(String title) {
-this.title = title;
-}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-public String getDescription() {
-return description;
-}
+	public String getStartDate() {
+		return startDate;
+	}
 
-public void setDescription(String description) {
-this.description = description;
-}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
 
-public Date getStartDate() {
-return startDate;
-}
+	public String getEndDate() {
+		return endDate;
+	}
 
-public void setStartDate(Date startDate) {
-this.startDate = startDate;
-}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
 
-public Date getEndDate() {
-return endDate;
-}
+	public Status getStatus() {
+		return status;
+	}
 
-public void setEndDate(Date endDate) {
-this.endDate = endDate;
-}
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
-@ManyToOne(cascade=CascadeType.ALL)
-private Project project;
+	@ManyToOne(cascade = CascadeType.MERGE)
+	private Project project;
 
-@ManyToOne(cascade=CascadeType.ALL)
-private Employee employee;
+	@ManyToOne(cascade = CascadeType.MERGE)
+	private Employee employee;
 
-public Project getProject() {
-return project;
-}
-public void setProject(Project project) {
-this.project = project;
-}
+	public Project getProject() {
+		return project;
+	}
 
-public Employee getEmployee() {
-return employee;
-}
-public void setEmployee(Employee employee) {
-this.employee= employee;
-}
+	public void setProject(Project project) {
+		this.project = project;
+	}
 
+	public Employee getEmployee() {
+		return employee;
+	}
 
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	@Override
+	public String toString() {
+		return "Task [id=" + id + ", title=" + title + ", description=" + description + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", status=" + status + "]";
+	}
 
 }
