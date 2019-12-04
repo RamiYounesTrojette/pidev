@@ -7,6 +7,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import Entities.Criteria;
 import Entities.EvaluationSheet;
@@ -34,10 +35,16 @@ public class CriteriaService implements CriteriaRemote {
 			Criteria.class).getResultList(); return emp;
 			}
 	public void removeCriterien(int id) {
-		System.out.println("In removeEmp : ");
-		em.remove(em.find(Criteria.class, id));
+		Query q = em.createNativeQuery("Delete from criteria where criteria.id = " + id);
+		q.executeUpdate();
 		System.out.println("Out of removeEmp : ");	
 
+	}
+public Criteria findCriteriaById(int id) {
+		
+		Criteria CR = em.find(Criteria.class, id);
+		
+		return CR;
 	}
 
 

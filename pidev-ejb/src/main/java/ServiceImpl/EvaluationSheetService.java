@@ -28,9 +28,9 @@ public class EvaluationSheetService implements EvaluationSheetInterf {
 	EntityManager em;
 
 
-	public int ajouterEvaluationSheet(EvaluationSheet evaluationsheet) {
+	public Boolean ajouterEvaluationSheet(EvaluationSheet evaluationsheet) {
 		em.persist(evaluationsheet);
-		return evaluationsheet.getId();
+		return true;
 	}
 	@Override
 	public void updateEval(EvaluationSheet evaluationsheet) { 
@@ -67,6 +67,7 @@ public Employee findEmpById(int id) {
 			Employee.class).getResultList(); return emp;
 			
 	} 
+	
 	
 	public void removeEval(int id) {
 		System.out.println("In removeEmp : ");

@@ -9,8 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
 public class Team implements Serializable {
 
 	
@@ -21,6 +25,7 @@ public class Team implements Serializable {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	
 	private int id;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
@@ -35,7 +40,7 @@ public class Team implements Serializable {
 	public Team() {
 
 	}
-
+	@XmlAttribute(name="id",required=true)
 	public int getId() {
 		return id;
 	}
@@ -43,7 +48,7 @@ public class Team implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	@XmlElement(name="employees")
 	public Set<Employee> getEmployees() {
 		return Employees;
 	}

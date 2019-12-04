@@ -2,21 +2,22 @@ package Entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
+@XmlRootElement
 public class Employee  implements Serializable {
 	
 	private static long serialVersionUID = 1L;
@@ -28,17 +29,17 @@ public class Employee  implements Serializable {
 		serialVersionUID = serialversionuid;
 	}
 	
-	public List<Commentaire> getCommentaires() {
+	/*public List<Commentaire> getCommentaires() {
 		return commentaires;
 	}
 	public void setCommentaires(List<Commentaire> commentaires) {
 		this.commentaires = commentaires;
-	}
+	}*/
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	@OneToMany(mappedBy="employe")
-	private List<Commentaire> commentaires;
+	//@OneToMany(mappedBy="employe")
+	//private List<Commentaire> commentaires;
 	
 	private String firstname;
 	
@@ -60,6 +61,7 @@ public class Employee  implements Serializable {
 	public static void setSerialVersionUID(long serialVersionUID) {
 		Employee.serialVersionUID = serialVersionUID;
 	}
+	@JsonBackReference
 	public EvaluationSheet getEvaluationsheet() {
 		return evaluationsheet;
 	}
@@ -68,12 +70,22 @@ public class Employee  implements Serializable {
 	}
 	private Boolean isActif;
 	
-	@ManyToMany(mappedBy="Employees", cascade = CascadeType.ALL)
-	private Set<Team> Teams;
+	//@ManyToMany(mappedBy="Employees", cascade = CascadeType.ALL)
+	//private Set<Team> Teams;
+	
 	@OneToOne private EvaluationSheet evaluationsheet;
 	@Enumerated(EnumType.STRING)
 	private Role role;
+	
+	@JsonManagedReference
+    private Rating rating;
 
+	public Rating getRating() {
+		return rating;
+	}
+	public void setRating(Rating rating) {
+		this.rating = rating;
+	}
 	public Employee() {}
 	
 	
@@ -102,7 +114,7 @@ public class Employee  implements Serializable {
 		this.isActif = isActif;
 		this.role = role;
 	}
-
+	@XmlAttribute(name="id",required=true)
 	public int getId() {
 		return id;
 	}
@@ -110,7 +122,7 @@ public class Employee  implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	
 	public String getFirstname() {
 		return firstname;
 	}
@@ -118,7 +130,7 @@ public class Employee  implements Serializable {
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
-
+	
 	public String getLastname() {
 		return lastname;
 	}
@@ -126,7 +138,7 @@ public class Employee  implements Serializable {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-
+	
 	public String getEmail() {
 		return email;
 	}
@@ -134,7 +146,7 @@ public class Employee  implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 	public String getPassword() {
 		return password;
 	}
@@ -142,7 +154,7 @@ public class Employee  implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
 	public int getPhone() {
 		return phone;
 	}
@@ -150,7 +162,7 @@ public class Employee  implements Serializable {
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
-
+	
 	public Date getBirthday() {
 		return birthday;
 	}
@@ -158,7 +170,7 @@ public class Employee  implements Serializable {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
-
+	
 	public Boolean getIsActif() {
 		return isActif;
 	}
@@ -168,7 +180,7 @@ public class Employee  implements Serializable {
 	}
 
 	
-
+	
 	public Role getRole() {
 		return role;
 	}
@@ -178,7 +190,7 @@ public class Employee  implements Serializable {
 	}
 
 	
-
+	
 	public String getPhoto() {
 		return photo;
 	}
@@ -186,14 +198,14 @@ public class Employee  implements Serializable {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-
+	/*@XmlElement(name="teams")
 	public Set<Team> getTeams() {
 		return Teams;
 	}
 
 	public void setTeams(Set<Team> teams) {
 		Teams = teams;
-	}
+	}*/
 	
 	
 	
