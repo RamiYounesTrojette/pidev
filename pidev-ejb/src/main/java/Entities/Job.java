@@ -27,13 +27,13 @@ public class Job  implements Serializable, IBaseEntity {
 	private String description;
 	private int level;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade =CascadeType.MERGE)
 	private JobFamily jobfamily;
 	
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "jobs", cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "jobs", cascade ={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	private Set<Competency> competencies;
 	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "job", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "job", cascade ={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	private Set<Employee> employees;
 
 	public Job() {

@@ -42,11 +42,6 @@ public class GlobalCompetenciesBean implements Serializable {
 	}
 
 	public String selectJobFamiliy(JobFamily jobfamily) {
-
-//List<JobFamily> list = _service.getFiltered(f->((JobFamily)f).getName().equals("Sales & Client Management"), JobFamily.class);
-//Job j = new Job("Developer", "generic dev",1, jobfamily, null, null);
-//jobfamily.setJobs(new HashSet<Job>(Arrays.asList(j)));
-//_service.update(jobfamily);
 		jobFamilyBean.setJobFamily(jobfamily);
 		return "/pages/competencies/JobFamilyDetails?faces-redirect=true";
 	}
@@ -102,7 +97,13 @@ public class GlobalCompetenciesBean implements Serializable {
 		return "/pages/competencies/JobFamilies?faces-redirect=true";
 	}
 
-	public void deleteJobFamily(int id) {
-		_service.delete(id, JobFamily.class);
+	public void deleteJobFamily(JobFamily jobfamily) {
+		Iterator<Job> iterator = jobfamily.getJobs().iterator();
+		while (iterator.hasNext()) {
+			Job j = iterator.next();
+			iterator.remove();
+			_service.delete(j, Job.class);
+		}
+		_service.delete(jobfamily, JobFamily.class);
 	}
 }

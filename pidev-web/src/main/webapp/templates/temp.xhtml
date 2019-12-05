@@ -4,7 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+	<h:head>
 <link rel="stylesheet" type="text/css"
 	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
 <link rel="stylesheet"
@@ -20,6 +23,7 @@
 	<link
 	href="#{facesContext.externalContext.requestContextPath}/assets/css/jobfamilies.css"
 	rel="stylesheet" />
+	</h:head>
 <body>
 <!-- 	<ui:include src="/templates/header.xhtml" /> -->
 	<ui:include src="/templates/menu.xhtml" />
@@ -121,9 +125,7 @@
 			<!-- <ui:include src="/templates/footer.xhtml" /> -->
 		</div>
 	
-
-
-	<script
+<script
 		src="#{facesContext.externalContext.requestContextPath}/assets/js/core/jquery.min.js"></script>
 
 	<script

@@ -7,9 +7,8 @@ import java.util.stream.Collectors;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
 
 import Interfaces.GenericServiceRemote;
 import Interfaces.IBaseEntity;
@@ -29,14 +28,15 @@ public class GenericService implements GenericServiceRemote {
 	}
 
 	@Override
-	public <T extends IBaseEntity> void update(T t) {
-		em.merge(t);
+	public <T extends IBaseEntity> T update(T t) {
+		return em.merge(t);
 
 	}
 
 	@Override
-	public <T extends IBaseEntity> void delete(int id, Class<T> type) {
-		em.remove(get(id, type));
+	public <T extends IBaseEntity> void delete(T t, Class<T> type) {
+
+	 em.createQuery("delete from " + type.getName() + " a where a.id=:i").setParameter("i", t.getId()).executeUpdate();
 	}
 
 	@Override

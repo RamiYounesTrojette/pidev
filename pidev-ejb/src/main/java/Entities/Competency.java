@@ -25,10 +25,10 @@ public class Competency implements Serializable, IBaseEntity {
 	private String description;
 	private int level;
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER,cascade ={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	private Set<Job> jobs;
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade ={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	private Set<Employee> employees;
 
 	public Competency() {

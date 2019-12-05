@@ -23,10 +23,10 @@ public class Employee  implements Serializable, IBaseEntity {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade ={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	private Job job;
 	
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "employees", cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "employees", cascade ={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	private Set<Competency> competencies;
 
 	@Override
