@@ -29,6 +29,23 @@ public class CompetencyResource {
 	@EJB
 	GenericService _service;
 	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getCompetencies() {		
+		try 
+		{	
+		List<Competency> comps = _service.getAll(Competency.class);
+		ArrayList<Object> res = new ArrayList<Object>();
+		Iterator<Competency> itr = comps.iterator();
+		while(itr.hasNext()) {
+			Competency comp = itr.next();
+			res.add(new Object() {public int id=comp.getId(); public String name = comp.getName() + " level " + comp.getLevel();});
+		}
+		return Response.status(200).entity(res).build();
+	} catch(Exception e) {
+		return Response.status(500).entity("An error has occurred. Please verify the data!").build();
+	}
+	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -44,6 +61,15 @@ public class CompetencyResource {
 
 		return Response.status(500).entity("An error has occurred. Please verify the data!").build();
 	}
+	
+	@DELETE
+	@Path("/{Id}")
+	public Response deleteEmployee(@PathParam("Id") int Id) {
+		_service.delete(_service.get(Id, Competency.class), Competency.class);
+
+			return Response.status(Status.GONE).entity("").build();
+	}
+	
 /*
 	@GET
 	@Path("/{Id}")
